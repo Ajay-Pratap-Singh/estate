@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="projects-form">
+        <span id="add-field-input">
+            <input type="text" name="field" id="field-input" placeholder="field name">
+            <select name="type" id="type-select" title="field type">
+                <option value="1">Text - Single Line</option>
+                <option value="2">Text - Multiple Line</option>
+                <option value="3">Number</option>
+                <option value="4">Email</option>
+                <option value="5">Options</option>
+            </select>
+            <button id="add-field-button">Add Field</button>
+        </span>
+        <span id="butt"><button id="add-project-button">Add Project</button></span>
+    </form>
+    <table id="projects-table">
+        <tr class="table-head">
+        </tr>
+    </table>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="../firebase.js"></script>
+    <script src="projects.js"></script>
+</body>
+</html>

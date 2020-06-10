@@ -4,17 +4,16 @@ form{
     display: flex;
     flex-direction: column;
 }
-.form-field{
+div{
+    display: flex;
+    align-items: flex-start;
+}
+span{
     display: flex;
     flex-direction: row;
 }
-.form-field>*{
-    margin: 0 12px;
+span>*{
     order:1;
-}
-.form-right{
-    display:flex;
-    flex-direction: column;
 }
 #add-field-input{
     order: 2;
@@ -22,11 +21,9 @@ form{
 #butt{
     order: 3;
 }
-.type-input{
+.filter-input{
     display: none;
 }
-.input-active{
-    display: flex;
-    flex-direction: column;
-    margin-left: 28px;
+.filter-input-active{
+    display: unset;
 }

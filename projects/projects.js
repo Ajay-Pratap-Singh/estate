@@ -28,7 +28,7 @@ addFieldButton.addEventListener('click',(e)=>{
 addProjectButton.addEventListener('click',(e)=>{
     data=new FormData(projectsForm);
     var object = {};
-    data.forEach((value, key) => {object[key] = value});
+    data.forEach((value, key) => {object[key] = value.trim()});
     delete object.field;
     delete object.type;
     addProject(object);
@@ -82,16 +82,77 @@ projectFields.on('child_added',snap=>{
     fieldLabel.setAttribute('for',field);
     fieldLabel.innerHTML=field;
     const  formField = document.createElement('span');
+    formField.classList.add('form-field');
     formField.appendChild(fieldLabel);
     switch(type){
-        case 1: formField.innerHTML+='<input name="'+field+'" type="text" placeholder="'+field+'">';
+        case 1: formField.innerHTML+='<span class="form-right"><input name="'+field+'" type="text" placeholder="'+field+'"></span>';
             break;
-        case 2: formField.innerHTML+='<textarea name="'+field+'" placeholder="'+field+'"></textarea>';
+        case 2: formField.innerHTML+='<span class="form-right"><textarea name="'+field+'" placeholder="'+field+'"></textarea></span>';
             break;
-        case 3: formField.innerHTML+='<input name="'+field+'" type="number" placeholder="'+field+'">';
+        case 3: formField.innerHTML+='<span class="form-right"><input name="'+field+'" type="number" placeholder="'+field+'"></span>';
             break;
-        case 4: formField.innerHTML+='<input name="'+field+'" type="email" placeholder="'+field+'">';
+        case 4: formField.innerHTML+='<span class="form-right"><input name="'+field+'" type="email" placeholder="'+field+'"></span>';
             break;
+        case 6: 
+            formField.innerHTML+=
+                `<span id="flat-type" class="form-right">
+                    <div class="types">
+                        <span class="check">
+                            <input type="checkbox" id="1BHK" name="1BHK">
+                            <label for="1BHK">1 BHK</label>
+                        </span>
+                        <span class="type-input">
+                            <input name="Area" type="text" placeholder="Area">
+                            <input name="Price" type="number" placeholder="Price">
+                            <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
+                        </span>
+                    </div>
+                    <div class="types">
+                        <span class="check">
+                            <input type="checkbox" id="2BHK" name="2BHK">
+                            <label for="2BHK">2 BHK</label>
+                        </span>
+                        <span class="type-input">
+                            <input name="Area" type="text" placeholder="Area">
+                            <input name="Price" type="number" placeholder="Price">
+                            <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
+                        </span>
+                    </div>
+                    <div class="types">
+                        <span class="check">
+                            <input type="checkbox" id="3BHK" name="3BHK">
+                            <label for="3BHK">3 BHK</label>
+                        </span>
+                        <span class="type-input">
+                            <input name="Area" type="text" placeholder="Area">
+                            <input name="Price" type="number" placeholder="Price">
+                            <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
+                        </span>
+                    </div>
+                    <div class="types">
+                        <span class="check">
+                            <input type="checkbox" id="4BHK" name="4BHK">
+                            <label for="4BHK">4 BHK</label>
+                        </span>
+                        <span class="type-input">
+                            <input name="Area" type="text" placeholder="Area">
+                            <input name="Price" type="number" placeholder="Price">
+                            <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
+                        </span>
+                    </div>
+                </span>`;
+                setTimeout(()=>{
+                    document.querySelector('#flat-type').addEventListener('click',(e)=>{
+                        if(e.target.type=='checkbox'){
+                            const typeInp=e.target.parentNode.nextElementSibling;
+                            typeInp.classList.toggle('input-active');
+                            typeInp.children.Area.value="";
+                            typeInp.children.Price.value="";
+                            typeInp.children.Specifications.value="";
+                        }
+                    });
+                },100)
+                break;
     }
     projectsForm.appendChild(formField);
 })

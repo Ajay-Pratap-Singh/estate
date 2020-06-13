@@ -27,11 +27,28 @@ addFieldButton.addEventListener('click',(e)=>{
 
 addProjectButton.addEventListener('click',(e)=>{
     data=new FormData(projectsForm);
-    var object = {};
-    data.forEach((value, key) => {object[key] = value.trim()});
-    delete object.field;
-    delete object.type;
-    addProject(object);
+    data.delete('1BHK');
+    data.delete('2BHK');
+    data.delete('3BHK');
+    data.delete('4BHK');
+    var obj = {};
+    data.forEach((value, key) => {obj[key] = value.trim()});
+    delete obj.field;
+    delete obj.type;
+    const inpActive=document.querySelectorAll('.input-active');
+    if(inpActive.length){
+        inpActive.forEach(ele=>{
+            let temp={...obj}
+            temp.Type=ele.id;
+            temp.Area=ele.children.Area.value.trim();
+            temp.Price=ele.children.Price.value.trim();
+            temp.Specifications=ele.children.Specifications.value.trim();
+            addProject(temp);
+            ele.classList.remove('input-active');
+        })
+    }else{
+        alert('Enter Types of Flats in the Project.');
+    }
     projectsForm.reset();
 })
 
@@ -98,10 +115,10 @@ projectFields.on('child_added',snap=>{
                 `<span id="flat-type" class="form-right">
                     <div class="types">
                         <span class="check">
-                            <input type="checkbox" id="1BHK" name="1BHK">
+                            <input type="checkbox" name="1BHK">
                             <label for="1BHK">1 BHK</label>
                         </span>
-                        <span class="type-input">
+                        <span id="1BHK" class="type-input">
                             <input name="Area" type="text" placeholder="Area">
                             <input name="Price" type="number" placeholder="Price">
                             <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
@@ -109,10 +126,10 @@ projectFields.on('child_added',snap=>{
                     </div>
                     <div class="types">
                         <span class="check">
-                            <input type="checkbox" id="2BHK" name="2BHK">
+                            <input type="checkbox" name="2BHK">
                             <label for="2BHK">2 BHK</label>
                         </span>
-                        <span class="type-input">
+                        <span id="2BHK" class="type-input">
                             <input name="Area" type="text" placeholder="Area">
                             <input name="Price" type="number" placeholder="Price">
                             <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
@@ -120,10 +137,10 @@ projectFields.on('child_added',snap=>{
                     </div>
                     <div class="types">
                         <span class="check">
-                            <input type="checkbox" id="3BHK" name="3BHK">
+                            <input type="checkbox" name="3BHK">
                             <label for="3BHK">3 BHK</label>
                         </span>
-                        <span class="type-input">
+                        <span id="3BHK" class="type-input">
                             <input name="Area" type="text" placeholder="Area">
                             <input name="Price" type="number" placeholder="Price">
                             <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>
@@ -131,10 +148,10 @@ projectFields.on('child_added',snap=>{
                     </div>
                     <div class="types">
                         <span class="check">
-                            <input type="checkbox" id="4BHK" name="4BHK">
+                            <input type="checkbox" name="4BHK">
                             <label for="4BHK">4 BHK</label>
                         </span>
-                        <span class="type-input">
+                        <span id="4BHK" class="type-input">
                             <input name="Area" type="text" placeholder="Area">
                             <input name="Price" type="number" placeholder="Price">
                             <textarea name="Specifications" type="text" placeholder="Specifications"></textarea>

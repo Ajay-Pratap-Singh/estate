@@ -1,29 +1,226 @@
-form{
-    margin:12px auto;
-    width: 50%;
+*{
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 1fr;
+    grid-template-areas: "head button filter"
+    "list list filter";
+}
+body>h1{
+    color: rgba(19, 38, 68);
+    grid-area: head;
+    margin-left: 40px;
+    margin-top: 40px;
+    font-size: 2.5em;
+    max-height: 3em;
+}
+#filter-form{
+    position: sticky;
+    top:calc(100vh - 110%);
+    grid-area: filter;
+    border-radius: 30px 0 0 30px;
     display: flex;
     flex-direction: column;
+    padding:12px 24px;
+    background-color: rgba(250,248,249);
+    color: rgba(19, 38, 68);
+    min-height: 100vh;
+    height: max-content;
 }
-div{
+#filter-form h1{
+    font-size: 2.4em;
+}
+#filter-form>div{
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    margin-top: 12px;
 }
-span{
+#filter-form>div>*:nth-child(2){
+    margin-top: 8px;
+    margin-left: 20px;
+}
+#filter-form span{
     display: flex;
     flex-direction: row;
 }
-span>*{
+#filter-form span>*{
     order:1;
 }
-#add-field-input{
-    order: 2;
-}
-#butt{
+#filter-form #butt{
     order: 3;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#filter-form #butt button{
+    background-color: rgba(255, 92, 1);
+    border:1px solid rgba(255, 92, 1);
+}
+#filter-form #butt button:hover{
+    border:1px solid rgb(255, 87, 12);
+    background-color: white;
+    color: rgb(255, 87, 12);
+}
+#filter-form #butt button:active{
+    color:white;
+    border: none;
+    background-color: rgb(255, 87, 12);
 }
 .filter-input{
     display: none;
 }
 .filter-input-active{
     display: unset;
+}
+
+ul{
+    grid-area: list;
+    margin: 0;
+    padding:  0px 20px;
+    list-style: none;
+    min-height:100vh;
+}
+li{
+    padding:12px 18px;
+    margin: 12px 12px 32px 12px;
+    border-radius: 1em;
+    background-color: rgba(246,244,245);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    "name name name name"
+    "loc loc pos ."
+    "type size price more";
+}
+li span{
+    margin: 8px;
+}
+.project-name-span{
+    grid-area: name;
+}
+.project-loc-span{
+    grid-area: loc;
+}
+.project-type-span{
+    grid-area: type;
+}
+.project-area-span{
+    grid-area: size;
+}
+.project-price-span{
+    grid-area: price;
+}
+.project-more-span{
+    grid-area: more;
+}
+
+button{
+    border:none;
+    border-radius: 22px;
+    padding: 12px 18px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: rgba(70, 40, 66);
+    border:1px solid rgba(70, 40, 66);
+    color: white;
+    align-self: center;
+    cursor: pointer;
+}
+button:hover{
+    border:1px solid rgba(70, 40, 66);
+    background-color: white;
+    color: rgba(70, 40, 66);
+}
+button:active{
+    color:white;
+    border: none;
+    background-color: rgba(70, 40, 66);
+}
+#add-projects{
+    margin-top: 40px;
+    margin-right:40px;
+    border: 1px solid rgba(255, 92, 1);
+    background-color: rgba(255, 92, 1);
+}
+#add-projects:hover{
+    background-color: white;
+    color:rgba(255, 92, 1);
+}
+#overlay{
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+}
+#projects-form{
+    background-color: rgba(250,248,249);
+    padding:2em;
+    border-radius: 2em;
+    height: max-content;
+    width: 50%;
+}
+.form-field{
+    display: flex;
+    flex-direction: row;
+    order:1;
+    margin: 12px;
+}
+.form-field>*:first-child{
+    flex-grow: 1;
+}
+.form-right{
+    display:flex;
+    flex-direction: column;
+    flex-grow: 2;
+    padding: 0 12px;
+    width: min-content;
+}
+#add-field-input{
+    align-self: center;
+    margin: 12px 0;
+    order: 2;
+}
+#projects-form #butt{
+    order: 3;
+    margin: 40px 0 28px 0;
+    align-self: center;
+}
+#projects-form #butt button{
+    width:20em;
+    background-color: rgb(255, 87, 12);
+    border-color: rgb(255, 87, 12);
+}
+#add-field-button{
+    padding :8px 12px;
+    margin: 12px;
+}
+.type-input{
+    display: none;
+    margin: 4px;
+    margin-bottom: 22px;
+}
+.type-input>*{
+    margin: 4px;
+    width: 15em;
+}
+.input-active{
+    display: flex;
+    flex-direction: column;
+    margin-left: 28px;
+}
+.show-form#overlay{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    overflow-y:scroll;
+}
+
+#projects-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
 }

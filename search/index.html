@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Projects</h1>
+    <button id="add-projects">+ Add Project</button>
+    <ul id="fill-result-list">
+        <li id="project-id">
+            <span class="project-name-span">Tata Agnihotri Project Gurugram</span>
+            <span class="project-loc-span">1209, Kasturba Road, Mahanadi Par, Gurugram, Haryana - 131001</span>
+            <span class="project-pos-span">1209, Kasturba Road, Mahanadi Par, Gurugram, Haryana - 131001</span>
+            <span class="project-type-span">2BHK</span>
+            <span class="project-area-span">1590 sq Ft</span>
+            <span class="project-price-span">80 Lakh</span>
+            <span class="project-more-span"><Button class="more-info-button">View More</Button></span>
+        </li>
+    </ul>
     <form id="filter-form">
+        <h1>Filter</h1>
         <label for="filter-add">Choose fields on which you want to apply filter on:</label>
         <div id="butt">
             <button id="apply-filter-button">Apply Filter</button>
         </div>
     </form>
+    <div id="overlay">
+        <form id="projects-form">
+            <h1>Add New Project</h1>
+            <span id="add-field-input">
+                <input type="text" name="field" id="field-input" placeholder="field name">
+                <select name="type" id="type-select" title="field type">
+                    <option value="1">Text - Single Line</option>
+                    <option value="2">Text - Multiple Line</option>
+                    <option value="3">Number</option>
+                    <option value="4">Email</option>
+                    <option value="5">Options</option>
+                </select>
+                <button id="add-field-button">Add Field</button>
+            </span>
+            <span id="butt"><button id="add-project-button">Add Project</button></span>
+        </form>
+    </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
